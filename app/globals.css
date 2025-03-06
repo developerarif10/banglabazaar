@@ -2,72 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Loading icon css  */
-
-.dots {
-  width: 40px;
-  height: 19.2px;
-  background: radial-gradient(circle closest-side, #5053ed 90%, #0000) 0% 50%,
-    radial-gradient(circle closest-side, #5053ed 90%, #0000) 50% 50%,
-    radial-gradient(circle closest-side, #5053ed 90%, #0000) 100% 50%;
-  background-size: calc(100% / 3) 9.6px;
-  background-repeat: no-repeat;
-  animation: dots-7ar3yq 0.8s infinite linear;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --foreground: 0 0% 3.9%;
+
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 0 0% 3.9%;
+
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 0 0% 9%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
     --radius: 0.5rem;
   }
+
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+
+    --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
+
+    --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
+
     --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
     --accent-foreground: 0 0% 98%;
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
   }
 }
 
@@ -77,5 +72,226 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Custom styles */
+.preload-wrapper {
+  position: relative;
+}
+
+.preload {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preload-logo {
+  position: relative;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: hsl(var(--primary));
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Marquee animation */
+.marquee-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 1rem;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Button styles */
+.btn-fill {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-colors;
+}
+
+.btn-outline {
+  @apply border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors;
+}
+
+.btn-line {
+  @apply text-primary hover:underline transition-all;
+}
+
+.animate-hover-btn {
+  @apply relative overflow-hidden;
+}
+
+.animate-hover-btn:after {
+  content: "";
+  @apply absolute inset-0 bg-primary/10 scale-x-0 origin-right transition-transform;
+}
+
+.animate-hover-btn:hover:after {
+  @apply scale-x-100 origin-left;
+}
+
+/* Icon styles */
+.box-icon {
+  @apply flex items-center justify-center w-10 h-10 rounded-full bg-white border border-border transition-colors;
+}
+
+.hover-img img {
+  @apply transition-transform duration-500;
+}
+
+.hover-img:hover img {
+  @apply scale-105;
+}
+
+/* Collection styles */
+.collection-item {
+  @apply relative overflow-hidden rounded-md;
+}
+
+.collection-content {
+  @apply absolute bottom-4 left-4;
+}
+
+.collection-title {
+  @apply bg-white px-4 py-2 rounded-md font-medium flex items-center gap-2;
+}
+
+.hover-icon i {
+  @apply transition-transform duration-300;
+}
+
+.hover-icon:hover i {
+  @apply translate-x-1;
+}
+
+/* Card product styles */
+.card-product {
+  @apply relative mb-6;
+}
+
+.card-product-wrapper {
+  @apply relative overflow-hidden rounded-md;
+}
+
+.list-product-btn {
+  @apply absolute top-4 right-4 flex flex-col gap-2 opacity-0 transition-opacity;
+}
+
+.card-product:hover .list-product-btn {
+  @apply opacity-100;
+}
+
+.img-hover {
+  @apply absolute inset-0 opacity-0 transition-opacity;
+}
+
+.card-product:hover .img-hover {
+  @apply opacity-100;
+}
+
+.card-product-info {
+  @apply mt-3 space-y-1;
+}
+
+.list-color-product {
+  @apply flex gap-1 mt-2;
+}
+
+.color-swatch {
+  @apply relative cursor-pointer;
+}
+
+.swatch-value {
+  @apply w-5 h-5 rounded-full border border-border;
+}
+
+.tooltip {
+  @apply absolute bottom-full left-1/2 -translate-x-1/2 bg-black text-white text-xs py-1 px-2 rounded opacity-0 transition-opacity whitespace-nowrap;
+}
+
+.hover-tooltip:hover .tooltip {
+  @apply opacity-100;
+}
+
+/* Size list */
+.size-list {
+  @apply absolute bottom-4 left-4 flex gap-1 opacity-0 transition-opacity;
+}
+
+.size-list span {
+  @apply bg-white px-2 py-1 text-xs font-medium rounded;
+}
+
+.card-product:hover .size-list {
+  @apply opacity-100;
+}
+
+/* Testimonial styles */
+.testimonial-item {
+  @apply bg-white p-6 rounded-lg shadow-sm;
+}
+
+.rating {
+  @apply flex text-accent mb-2;
+}
+
+/* Footer styles */
+.footer-menu-list {
+  @apply space-y-2;
+}
+
+.footer-menu_item {
+  @apply text-muted-foreground hover:text-primary transition-colors;
+}
+
+.footer-bottom {
+  @apply border-t border-border py-4;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .md-hidden {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tf-lg-hidden {
+    display: none;
+  }
+
+  .tf-md-hidden {
+    display: none;
   }
 }
