@@ -16,7 +16,7 @@ const testimonials = [
       id: 1,
       name: "Jersey thong body",
       price: 105.95,
-      image: "/images/shop/products/img-p2.png",
+      image: "/assets/shop/products/img-p4.png",
     },
   },
   {
@@ -29,7 +29,7 @@ const testimonials = [
       id: 2,
       name: "Cotton jersey top",
       price: 7.95,
-      image: "/images/shop/products/img-p3.png",
+      image: "/assets/shop/products/img-p2.png",
     },
   },
   {
@@ -42,7 +42,7 @@ const testimonials = [
       id: 3,
       name: "Ribbed modal T-shirt",
       price: 18.95,
-      image: "/images/shop/products/img-p4.png",
+      image: "/assets/shop/products/img-p4.png",
     },
   },
   {
@@ -55,7 +55,7 @@ const testimonials = [
       id: 4,
       name: "Customer from Japan",
       price: 16.95,
-      image: "/images/shop/products/img-p5.png",
+      image: "/assets/shop/products/img-p5.png",
     },
   },
 ];

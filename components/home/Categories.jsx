@@ -12,7 +12,7 @@ const categories = [
     link: "/shop",
   },
   {
-    image: "/assets/shop/glasses-4.jpg",
+    image: "/assets/shop/collection-8.jpg",
     title: "Sunglasses",
     link: "/shop",
   },

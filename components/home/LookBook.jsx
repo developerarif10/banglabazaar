@@ -18,7 +18,7 @@ export default function Lookbook() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <LookbookItem
-            image="/images/shop/file/lookbook-3.jpg"
+            image="/assets/shop/file/lookbook-3.jpg"
             hotspots={[
               {
                 x: 30,
@@ -27,7 +27,7 @@ export default function Lookbook() {
                   id: 1,
                   name: "Jersey thong body",
                   price: 112.0,
-                  image: "/images/shop/products/img-p2.png",
+                  image: "/assets/shop/products/img-p2.png",
                 },
               },
               {
@@ -37,14 +37,14 @@ export default function Lookbook() {
                   id: 2,
                   name: "Ribbed modal T-shirt",
                   price: 20.0,
-                  image: "/images/shop/products/img-p4.png",
+                  image: "/assets/shop/products/img-p4.png",
                 },
               },
             ]}
           />
 
           <LookbookItem
-            image="/images/shop/file/lookbook-4.jpg"
+            image="/assets/shop/file/lookbook-4.jpg"
             hotspots={[
               {
                 x: 40,
@@ -53,7 +53,7 @@ export default function Lookbook() {
                   id: 3,
                   name: "Ribbed Tank Top",
                   price: 20.0,
-                  image: "/images/shop/products/img-p5.png",
+                  image: "/assets/shop/products/img-p5.png",
                 },
               },
             ]}

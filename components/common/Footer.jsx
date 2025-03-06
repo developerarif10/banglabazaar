@@ -203,7 +203,7 @@ export default function Footer() {
               <div className="relative group">
                 <button className="flex items-center gap-1 text-sm">
                   <Image
-                    src="/images/country/us.svg"
+                    src="/assets/country/us.svg"
                     width={16}
                     height={16}
                     alt="US"
@@ -230,31 +230,31 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-2">
               <Image
-                src="/images/payments/visa.png"
+                src="/assets/payments/visa.png"
                 width={40}
                 height={24}
                 alt="Visa"
               />
               <Image
-                src="/images/payments/img-1.png"
+                src="/assets/payments/img-1.png"
                 width={40}
                 height={24}
                 alt="Mastercard"
               />
               <Image
-                src="/images/payments/img-2.png"
+                src="/assets/payments/img-2.png"
                 width={40}
                 height={24}
                 alt="Amex"
               />
               <Image
-                src="/images/payments/img-3.png"
+                src="/assets/payments/img-3.png"
                 width={40}
                 height={24}
                 alt="PayPal"
               />
               <Image
-                src="/images/payments/img-4.png"
+                src="/assets/payments/img-4.png"
                 width={40}
                 height={24}
                 alt="Apple Pay"

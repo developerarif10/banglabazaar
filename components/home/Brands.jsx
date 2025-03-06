@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 const brands = [
-  { id: 1, image: "/images/brand/brand-01.png" },
-  { id: 2, image: "/images/brand/brand-02.png" },
-  { id: 3, image: "/images/brand/brand-03.png" },
-  { id: 4, image: "/images/brand/brand-04.png" },
-  { id: 5, image: "/images/brand/brand-05.png" },
-  { id: 6, image: "/images/brand/brand-06.png" },
+  { id: 1, image: "/assets/brand/brand-01.png" },
+  { id: 2, image: "/assets/brand/brand-02.png" },
+  { id: 3, image: "/assets/brand/armani.png" },
+  { id: 4, image: "/assets/brand/brand-03.png" },
+  { id: 5, image: "/assets/brand/brand-05.png" },
+  { id: 6, image: "/assets/brand/patagonia-logo.png" },
 ];
 
 export default function Brands() {

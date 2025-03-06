@@ -5,11 +5,11 @@ import Image from "next/image";
 import { useRef } from "react";
 
 const galleryItems = [
-  { id: 1, image: "/images/shop/gallery/gallery-7.jpg" },
-  { id: 2, image: "/images/shop/gallery/gallery-3.jpg" },
-  { id: 3, image: "/images/shop/gallery/gallery-5.jpg" },
-  { id: 4, image: "/images/shop/gallery/gallery-8.jpg" },
-  { id: 5, image: "/images/shop/gallery/gallery-6.jpg" },
+  { id: 1, image: "/assets/shop/gallery/gallery-1.jpg" },
+  { id: 2, image: "/assets/shop/gallery/gallery-2.jpg" },
+  { id: 3, image: "/assets/shop/gallery/gallery-4.jpg" },
+  { id: 4, image: "/assets/shop/gallery/gallery-5.jpg" },
+  { id: 5, image: "/assets/shop/gallery/gallery-24.jpg" },
 ];
 
 export default function ShopGram() {
