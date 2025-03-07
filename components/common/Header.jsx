@@ -261,14 +261,6 @@ export default function Header() {
                     </Link>
                   </div>
                 </li>
-                <li>
-                  <Link
-                    href="https://themeforest.net"
-                    className="py-2 hover:text-black"
-                  >
-                    Buy now
-                  </Link>
-                </li>
               </ul>
             </nav>
 
