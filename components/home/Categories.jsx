@@ -75,7 +75,7 @@ export default function Categories() {
           <div className="col-span-12 md:col-span-8">
             <div
               ref={sliderRef}
-              className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 snap-x"
+              className="flex gap-6 overflow-x-auto scrollbar-hide no-scrollbar pb-4 snap-x"
             >
               {categories.map((category, index) => (
                 <div key={index} className="min-w-[280px] snap-start">
