@@ -236,21 +236,12 @@ export default function TopBar() {
                   </button>
                   <button
                     onClick={() => {
-                      setLanguage("العربية");
+                      setLanguage("Bangla");
                       setLanguageDropdown(false);
                     }}
                     className="p-2 w-full hover:bg-gray-100 rounded-md text-left"
                   >
-                    العربية
-                  </button>
-                  <button
-                    onClick={() => {
-                      setLanguage("简体中文");
-                      setLanguageDropdown(false);
-                    }}
-                    className="p-2 w-full hover:bg-gray-100 rounded-md text-left"
-                  >
-                    简体中文
+                    Bangla
                   </button>
                 </div>
               )}

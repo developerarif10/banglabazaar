@@ -10,7 +10,7 @@ import Testimonials from "@/components/home/Testimonials";
 
 export default function Home() {
   return (
-    <main>
+    <div>
       <HeroSlider />
       <Marquee />
       <Categories />
@@ -20,6 +20,6 @@ export default function Home() {
       <Brands />
       <ShopGram />
       <IconBoxes />
-    </main>
+    </div>
   );
 }
