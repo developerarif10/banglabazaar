@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import ModeToggle from "../others/mode-toggle";
 
 export default function TopBar() {
-  const [currency, setCurrency] = useState("USD");
-  const [language, setLanguage] = useState("English");
-  const [currencyDropdown, setCurrencyDropdown] = useState(false);
+  const [language, setLanguage] = useState("Eng");
   const [languageDropdown, setLanguageDropdown] = useState(false);
 
   return (
@@ -149,59 +148,8 @@ export default function TopBar() {
           </div>
 
           {/* Language & Currency */}
-          <div className="flex justify-center md:justify-end gap-4">
-            <div className="relative">
-              <button
-                className="flex items-center gap-1 hover:text-black"
-                onClick={() => setCurrencyDropdown(!currencyDropdown)}
-              >
-                {currency === "USD" && (
-                  <span className="w-4 h-4 bg-blue-900 rounded-full inline-block mr-1"></span>
-                )}
-                {currency}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="m6 9 6 6 6-6"></path>
-                </svg>
-              </button>
-              {currencyDropdown && (
-                <div className="absolute right-0 top-full mt-2 bg-white shadow-md rounded-md p-2 z-10 w-48">
-                  <button
-                    onClick={() => {
-                      setCurrency("EUR");
-                      setCurrencyDropdown(false);
-                    }}
-                    className="flex items-center gap-2 p-2 w-full hover:bg-gray-100 rounded-md text-left"
-                  >
-                    <span className="w-4 h-4 bg-blue-600 rounded-full inline-block"></span>
-                    EUR{" "}
-                    <span className="text-xs text-gray-500">€ | France</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setCurrency("USD");
-                      setCurrencyDropdown(false);
-                    }}
-                    className="flex items-center gap-2 p-2 w-full hover:bg-gray-100 rounded-md text-left"
-                  >
-                    <span className="w-4 h-4 bg-blue-900 rounded-full inline-block"></span>
-                    USD{" "}
-                    <span className="text-xs text-gray-500">
-                      $ | United States
-                    </span>
-                  </button>
-                </div>
-              )}
-            </div>
+          <div className="flex justify-center items-center md:justify-end gap-4">
+            <ModeToggle />
 
             <div className="relative">
               <button
@@ -227,21 +175,21 @@ export default function TopBar() {
                 <div className="absolute right-0 top-full mt-2 bg-white shadow-md rounded-md p-2 z-10 w-32">
                   <button
                     onClick={() => {
-                      setLanguage("English");
+                      setLanguage("Eng");
                       setLanguageDropdown(false);
                     }}
                     className="p-2 w-full hover:bg-gray-100 rounded-md text-left"
                   >
-                    English
+                    Eng
                   </button>
                   <button
                     onClick={() => {
-                      setLanguage("Bangla");
+                      setLanguage("Ban");
                       setLanguageDropdown(false);
                     }}
                     className="p-2 w-full hover:bg-gray-100 rounded-md text-left"
                   >
-                    Bangla
+                    Ban
                   </button>
                 </div>
               )}

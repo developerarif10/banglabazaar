@@ -4,6 +4,7 @@ import ToolbarBottom from "@/components/common/ToolbarBottom";
 import TopBar from "@/components/common/TopBar";
 import Modals from "@/components/modals/Modals";
 import GoToTop from "@/components/ui/GoToTop";
+import { ThemeProvider } from "@/providers/theme-provider";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -16,17 +17,19 @@ export const metadata = {
 
 export default function MainLayout({ children }) {
   return (
-    <main className="suppressHydrationWarning">
-      <div id="wrapper">
-        <TopBar />
-        <Header />
-        {children}
-        <Footer />
-      </div>
+    <ThemeProvider>
+      <main className="suppressHydrationWarning">
+        <div id="wrapper">
+          <TopBar />
+          <Header />
+          {children}
+          <Footer />
+        </div>
 
-      <GoToTop />
-      <ToolbarBottom />
-      <Modals />
-    </main>
+        <GoToTop />
+        <ToolbarBottom />
+        <Modals />
+      </main>
+    </ThemeProvider>
   );
 }
