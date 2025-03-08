@@ -8,6 +8,9 @@ import StickyAddToCart from "../_components/StickyAddToCart";
 
 export default function ProductDetailPage() {
   // In a real app, you would fetch this data from an API based on the product ID
+
+  // const products = await getAllProducts()
+
   const product = {
     id: "1",
     title: "Cotton jersey top",

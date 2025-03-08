@@ -63,7 +63,7 @@ export default function ProductTabs({ product }) {
             <div className="mb-6">
               <h3 className="text-base font-medium mb-2">Features</h3>
               <ul className="list-disc pl-5 space-y-1">
-                {product.features.map((feature, index) => (
+                {product?.features?.map((feature, index) => (
                   <li key={index}>{feature}</li>
                 ))}
               </ul>

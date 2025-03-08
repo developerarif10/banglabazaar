@@ -9,21 +9,45 @@ export default function ProductCard({ product, layout = "grid" }) {
   const [activeColor, setActiveColor] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
+  // Fix 1: Adapt product data structure to component expectations
+  const adaptedProduct = {
+    id: product.id || "default-id", // Ensure there's always an ID
+    name: product.title || "", // Map title to name
+    price: product.price || 0,
+    description: product.description || "",
+    availability: product.inStock ? "In stock" : "Out of stock",
+    // Fix 2: Restructure the colors to match component expectations
+    colors: product.colors
+      ? product.colors.map((color) => ({
+          ...color,
+          image: color.images[0] || "/placeholder.svg", // Use first image for each color
+        }))
+      : null,
+    // Fix 3: Ensure images array exists and is populated
+    images: product.colors
+      ? [
+          product.colors[activeColor]?.images[0] || "/placeholder.svg",
+          product.colors[activeColor]?.images[1] || "/placeholder.svg",
+        ]
+      : ["/placeholder.svg"],
+  };
+
   if (layout === "list") {
     return (
       <div className="card-product flex flex-col md:flex-row gap-6 border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
         <div className="relative w-full md:w-1/3 aspect-[3/4]">
           <Link
-            href={`/product/${product.id}`}
+            href={`/product/${adaptedProduct.id}`}
             className="block relative h-full"
           >
             <Image
               src={
-                product.colors
-                  ? product.colors[activeColor].image
-                  : product.images[0]
+                adaptedProduct?.colors
+                  ? adaptedProduct.colors[activeColor]?.image ||
+                    "/placeholder.svg"
+                  : adaptedProduct.images[0] || "/placeholder.svg"
               }
-              alt={product.name}
+              alt={adaptedProduct.name}
               fill
               className="object-cover rounded-md"
             />
@@ -31,21 +55,21 @@ export default function ProductCard({ product, layout = "grid" }) {
         </div>
         <div className="w-full md:w-2/3">
           <Link
-            href={`/product/${product.id}`}
+            href={`/product/${adaptedProduct.id}`}
             className="text-xl font-medium hover:text-primary transition-colors"
           >
-            {product.name}
+            {adaptedProduct.name}
           </Link>
           <div className="text-lg font-semibold mt-2">
-            ${product.price.toFixed(2)}
+            ${adaptedProduct.price.toFixed(2)}
           </div>
           <p className="text-gray-600 mt-3 line-clamp-3">
-            {product.description}
+            {adaptedProduct.description}
           </p>
 
-          {product.colors && (
+          {adaptedProduct.colors && (
             <ul className="flex gap-2 mt-4">
-              {product.colors.map((color, index) => (
+              {adaptedProduct.colors.map((color, index) => (
                 <li
                   key={color.name}
                   className={`relative cursor-pointer rounded-full ${
@@ -102,23 +126,27 @@ export default function ProductCard({ product, layout = "grid" }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <Link href={`/product/${product.id}`} className="block relative h-full">
+        <Link
+          href={`/product/${adaptedProduct.id}`}
+          className="block relative h-full"
+        >
           <Image
             src={
-              product.colors
-                ? product.colors[activeColor].image
-                : product.images[0]
+              adaptedProduct.colors
+                ? adaptedProduct.colors[activeColor]?.image ||
+                  "/placeholder.svg"
+                : adaptedProduct.images[0] || "/placeholder.svg"
             }
-            alt={product.name}
+            alt={adaptedProduct.name}
             fill
             className="object-cover transition-opacity duration-500"
-            style={{ opacity: isHovered && product.images[1] ? 0 : 1 }}
+            style={{ opacity: isHovered && adaptedProduct.images[1] ? 0 : 1 }}
           />
 
-          {isHovered && product.images[1] && (
+          {isHovered && adaptedProduct.images[1] && (
             <Image
-              src={product.images[1] || "/placeholder.svg"}
-              alt={`${product.name} hover`}
+              src={adaptedProduct.images[1] || "/placeholder.svg"}
+              alt={`${adaptedProduct.name} hover`}
               fill
               className="object-cover absolute inset-0 transition-opacity duration-500"
             />
@@ -175,7 +203,7 @@ export default function ProductCard({ product, layout = "grid" }) {
         )}
 
         {/* Availability badge */}
-        {product.availability === "Out of stock" && (
+        {adaptedProduct.availability === "Out of stock" && (
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
             <span className="bg-white text-black px-4 py-2 rounded-md font-medium">
               Out of Stock
@@ -186,18 +214,18 @@ export default function ProductCard({ product, layout = "grid" }) {
 
       <div>
         <Link
-          href={`/product/${product.id}`}
+          href={`/product/${adaptedProduct.id}`}
           className="text-base font-medium hover:text-primary transition-colors"
         >
-          {product.name}
+          {adaptedProduct.name}
         </Link>
         <div className="text-sm font-semibold mt-1">
-          ${product.price.toFixed(2)}
+          ${adaptedProduct.price.toFixed(2)}
         </div>
 
-        {product.colors && (
+        {adaptedProduct.colors && (
           <ul className="flex gap-1 mt-2">
-            {product.colors.map((color, index) => (
+            {adaptedProduct.colors.map((color, index) => (
               <li
                 key={color.name}
                 className={`relative cursor-pointer rounded-full ${

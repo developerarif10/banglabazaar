@@ -1,0 +1,184 @@
+[
+  {
+    "title": "Slim Fit Denim Jacket",
+    "price": 45.0,
+    "comparePrice": 60.0,
+    "discount": "25%",
+    "badges": ["Best Seller", "Limited Edition"],
+    "description": "A timeless denim jacket with a modern slim fit. Features a button-up front, chest pockets, and a classic collar. Made from sustainable cotton fabric for all-day comfort.",
+    "colors": [
+      {
+        "id": "blue",
+        "name": "Blue",
+        "value": "bg-blue-700",
+        "images": ["/images/products/denim1.jpg", "/images/products/denim2.jpg"]
+      },
+      {
+        "id": "black",
+        "name": "Black",
+        "value": "bg-black",
+        "images": ["/images/products/denim3.jpg", "/images/products/denim4.jpg"]
+      }
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "features": ["Button-up front", "Slim fit design", "Chest pockets"],
+    "materials": ["100% Cotton Denim"],
+    "careInstructions": [
+      { "icon": "icon-machine", "text": "Machine wash cold" },
+      { "icon": "icon-iron", "text": "Iron at low temperature" }
+    ],
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 215,
+    "estimatedDelivery": "5-10 days",
+    "returnPolicy": "30-day return policy."
+  },
+  {
+    "title": "Oversized Cotton Hoodie",
+    "price": 35.0,
+    "comparePrice": 50.0,
+    "discount": "30%",
+    "badges": ["Trending", "New Arrival"],
+    "description": "Stay cozy with our oversized cotton hoodie. Features a drawstring hood, kangaroo pocket, and ribbed cuffs for a relaxed fit.",
+    "colors": [
+      {
+        "id": "gray",
+        "name": "Gray",
+        "value": "bg-gray-400",
+        "images": [
+          "/images/products/hoodie1.jpg",
+          "/images/products/hoodie2.jpg"
+        ]
+      },
+      {
+        "id": "black",
+        "name": "Black",
+        "value": "bg-black",
+        "images": [
+          "/images/products/hoodie3.jpg",
+          "/images/products/hoodie4.jpg"
+        ]
+      }
+    ],
+    "sizes": ["M", "L", "XL", "XXL"],
+    "features": ["Drawstring hood", "Soft fleece interior", "Kangaroo pocket"],
+    "materials": ["80% Cotton, 20% Polyester"],
+    "careInstructions": [
+      { "icon": "icon-machine", "text": "Machine wash max. 30ºC" },
+      { "icon": "icon-iron", "text": "Iron on low heat" }
+    ],
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 320,
+    "estimatedDelivery": "7-12 days",
+    "returnPolicy": "Return within 15 days."
+  },
+  {
+    "title": "Classic Chino Pants",
+    "price": 40.0,
+    "comparePrice": 55.0,
+    "discount": "27%",
+    "badges": ["Best Value"],
+    "description": "Versatile chino pants crafted from breathable cotton blend. Perfect for both casual and formal looks with a slim fit design.",
+    "colors": [
+      {
+        "id": "khaki",
+        "name": "Khaki",
+        "value": "bg-yellow-800",
+        "images": ["/images/products/chino1.jpg", "/images/products/chino2.jpg"]
+      },
+      {
+        "id": "navy",
+        "name": "Navy",
+        "value": "bg-blue-800",
+        "images": ["/images/products/chino3.jpg", "/images/products/chino4.jpg"]
+      }
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "features": ["Slim fit", "Stretch fabric", "Side & back pockets"],
+    "materials": ["98% Cotton, 2% Elastane"],
+    "careInstructions": [
+      { "icon": "icon-machine", "text": "Machine wash at 40ºC" },
+      { "icon": "icon-iron", "text": "Iron on medium heat" }
+    ],
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 189,
+    "estimatedDelivery": "6-10 days",
+    "returnPolicy": "Return within 20 days."
+  },
+  {
+    "title": "Floral Print Summer Dress",
+    "price": 55.0,
+    "comparePrice": 70.0,
+    "discount": "22%",
+    "badges": ["Editor's Pick"],
+    "description": "A breezy floral print dress with a flattering fit-and-flare silhouette. Perfect for summer days and casual outings.",
+    "colors": [
+      {
+        "id": "red",
+        "name": "Red",
+        "value": "bg-red-500",
+        "images": ["/images/products/dress1.jpg", "/images/products/dress2.jpg"]
+      },
+      {
+        "id": "blue",
+        "name": "Blue",
+        "value": "bg-blue-500",
+        "images": ["/images/products/dress3.jpg", "/images/products/dress4.jpg"]
+      }
+    ],
+    "sizes": ["S", "M", "L"],
+    "features": ["Floral print", "Lightweight fabric", "V-neck design"],
+    "materials": ["100% Rayon"],
+    "careInstructions": [
+      { "icon": "icon-machine", "text": "Hand wash recommended" },
+      { "icon": "icon-iron", "text": "Iron on low heat" }
+    ],
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 142,
+    "estimatedDelivery": "8-15 days",
+    "returnPolicy": "Free returns within 30 days."
+  },
+  {
+    "title": "Casual Cotton T-Shirt",
+    "price": 20.0,
+    "comparePrice": 30.0,
+    "discount": "33%",
+    "badges": ["Best Seller", "Affordable"],
+    "description": "A soft and breathable cotton t-shirt with a relaxed fit. Perfect for everyday wear with comfort in mind.",
+    "colors": [
+      {
+        "id": "white",
+        "name": "White",
+        "value": "bg-white",
+        "images": [
+          "/images/products/tshirt1.jpg",
+          "/images/products/tshirt2.jpg"
+        ]
+      },
+      {
+        "id": "black",
+        "name": "Black",
+        "value": "bg-black",
+        "images": [
+          "/images/products/tshirt3.jpg",
+          "/images/products/tshirt4.jpg"
+        ]
+      }
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "features": ["Crew neck", "Short sleeves", "Soft cotton fabric"],
+    "materials": ["100% Cotton"],
+    "careInstructions": [
+      { "icon": "icon-machine", "text": "Machine wash max. 30ºC" },
+      { "icon": "icon-dry", "text": "Tumble dry low" }
+    ],
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 276,
+    "estimatedDelivery": "5-10 days",
+    "returnPolicy": "30-day hassle-free return."
+  }
+]

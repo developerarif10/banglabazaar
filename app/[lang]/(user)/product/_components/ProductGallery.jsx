@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function ProductGallery({ product }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [activeColor, setActiveColor] = useState(product.colors[0].id);
+  const [activeColor, setActiveColor] = useState(product.colors[0]._id);
   const [images, setImages] = useState(product.colors[0].images);
 
   useEffect(() => {
