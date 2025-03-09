@@ -1,4 +1,5 @@
 import Breadcrumb from "@/components/ui/Breadcrumb";
+import { getProductDetails } from "@/queries/product.queries";
 import ProductGallery from "../_components/ProductGallery";
 import ProductInfo from "../_components/ProductInfo";
 import ProductTabs from "../_components/ProductTabs";
@@ -6,93 +7,93 @@ import RecentlyViewed from "../_components/RecentlyViewed";
 import RelatedProducts from "../_components/RelatedProducts";
 import StickyAddToCart from "../_components/StickyAddToCart";
 
-export default function ProductDetailPage() {
-  // In a real app, you would fetch this data from an API based on the product ID
+export default async function ProductDetailPage({ params }) {
+  const resolveParams = await params;
+  const { id } = resolveParams;
+  const product = await getProductDetails(id);
 
-  // const products = await getAllProducts()
-
-  const product = {
-    id: "1",
-    title: "Cotton jersey top",
-    price: 8.0,
-    comparePrice: 30.0,
-    discount: "20%",
-    badges: ["Best seller"],
-    description:
-      "Button-up shirt sleeves and a relaxed silhouette. It's tailored with drapey, crinkle-texture fabric that's made from LENZING™ ECOVERO™ Viscose — responsibly sourced wood-based fibres produced through a process that reduces impact on forests, biodiversity and water supply.",
-    colors: [
-      {
-        id: "beige",
-        name: "Beige",
-        value: "bg-[#f5f5dc]",
-        images: [
-          "/images/shop/products/hmgoepprod31.jpg",
-          "/images/shop/products/hmgoepprod.jpg",
-          "/images/shop/products/hmgoepprod2.jpg",
-          "/images/shop/products/hmgoepprod3.jpg",
-          "/images/shop/products/hmgoepprod4.jpg",
-          "/images/shop/products/hmgoepprod5.jpg",
-        ],
-      },
-      {
-        id: "black",
-        name: "Black",
-        value: "bg-black",
-        images: [
-          "/images/shop/products/hmgoepprod6.jpg",
-          "/images/shop/products/hmgoepprod7.jpg",
-          "/images/shop/products/hmgoepprod8.jpg",
-          "/images/shop/products/hmgoepprod9.jpg",
-        ],
-      },
-      {
-        id: "blue",
-        name: "Blue",
-        value: "bg-blue-600",
-        images: [
-          "/images/shop/products/hmgoepprod10.jpg",
-          "/images/shop/products/hmgoepprod11.jpg",
-          "/images/shop/products/hmgoepprod12.jpg",
-          "/images/shop/products/hmgoepprod13.jpg",
-        ],
-      },
-      {
-        id: "white",
-        name: "White",
-        value: "bg-white",
-        images: [
-          "/images/shop/products/hmgoepprod14.jpg",
-          "/images/shop/products/hmgoepprod15.jpg",
-          "/images/shop/products/hmgoepprod16.jpg",
-          "/images/shop/products/hmgoepprod17.jpg",
-        ],
-      },
-    ],
-    sizes: ["S", "M", "L", "XL"],
-    features: [
-      "Front button placket",
-      "Adjustable sleeve tabs",
-      "Babaton embroidered crest at placket and hem",
-    ],
-    materials: [
-      "Content: 100% LENZING™ ECOVERO™ Viscose",
-      "Care: Hand wash",
-      "Imported",
-    ],
-    careInstructions: [
-      { icon: "icon-machine", text: "Machine wash max. 30ºC. Short spin." },
-      { icon: "icon-iron", text: "Iron maximum 110ºC." },
-      { icon: "icon-bleach", text: "Do not bleach/bleach." },
-      { icon: "icon-dry-clean", text: "Do not dry clean." },
-      { icon: "icon-tumble-dry", text: "Tumble dry, medium hear." },
-    ],
-    inStock: true,
-    rating: 4.8,
-    reviewCount: 168,
-    estimatedDelivery: "12-26 days (International), 3-6 days (United States)",
-    returnPolicy:
-      "Return within 30 days of purchase. Duties & taxes are non-refundable.",
-  };
+  // const product = {
+  //   id: "1",
+  //   title: "Cotton jersey top",
+  //   price: 8.0,
+  //   comparePrice: 30.0,
+  //   discount: "20%",
+  //   badges: ["Best seller"],
+  //   description:
+  //     "Button-up shirt sleeves and a relaxed silhouette. It's tailored with drapey, crinkle-texture fabric that's made from LENZING™ ECOVERO™ Viscose — responsibly sourced wood-based fibres produced through a process that reduces impact on forests, biodiversity and water supply.",
+  //   colors: [
+  //     {
+  //       id: "beige",
+  //       name: "Beige",
+  //       value: "bg-[#f5f5dc]",
+  //       images: [
+  //         "/images/shop/products/hmgoepprod31.jpg",
+  //         "/images/shop/products/hmgoepprod.jpg",
+  //         "/images/shop/products/hmgoepprod2.jpg",
+  //         "/images/shop/products/hmgoepprod3.jpg",
+  //         "/images/shop/products/hmgoepprod4.jpg",
+  //         "/images/shop/products/hmgoepprod5.jpg",
+  //       ],
+  //     },
+  //     {
+  //       id: "black",
+  //       name: "Black",
+  //       value: "bg-black",
+  //       images: [
+  //         "/images/shop/products/hmgoepprod6.jpg",
+  //         "/images/shop/products/hmgoepprod7.jpg",
+  //         "/images/shop/products/hmgoepprod8.jpg",
+  //         "/images/shop/products/hmgoepprod9.jpg",
+  //       ],
+  //     },
+  //     {
+  //       id: "blue",
+  //       name: "Blue",
+  //       value: "bg-blue-600",
+  //       images: [
+  //         "/images/shop/products/hmgoepprod10.jpg",
+  //         "/images/shop/products/hmgoepprod11.jpg",
+  //         "/images/shop/products/hmgoepprod12.jpg",
+  //         "/images/shop/products/hmgoepprod13.jpg",
+  //       ],
+  //     },
+  //     {
+  //       id: "white",
+  //       name: "White",
+  //       value: "bg-white",
+  //       images: [
+  //         "/images/shop/products/hmgoepprod14.jpg",
+  //         "/images/shop/products/hmgoepprod15.jpg",
+  //         "/images/shop/products/hmgoepprod16.jpg",
+  //         "/images/shop/products/hmgoepprod17.jpg",
+  //       ],
+  //     },
+  //   ],
+  //   sizes: ["S", "M", "L", "XL"],
+  //   features: [
+  //     "Front button placket",
+  //     "Adjustable sleeve tabs",
+  //     "Babaton embroidered crest at placket and hem",
+  //   ],
+  //   materials: [
+  //     "Content: 100% LENZING™ ECOVERO™ Viscose",
+  //     "Care: Hand wash",
+  //     "Imported",
+  //   ],
+  //   careInstructions: [
+  //     { icon: "icon-machine", text: "Machine wash max. 30ºC. Short spin." },
+  //     { icon: "icon-iron", text: "Iron maximum 110ºC." },
+  //     { icon: "icon-bleach", text: "Do not bleach/bleach." },
+  //     { icon: "icon-dry-clean", text: "Do not dry clean." },
+  //     { icon: "icon-tumble-dry", text: "Tumble dry, medium hear." },
+  //   ],
+  //   inStock: true,
+  //   rating: 4.8,
+  //   reviewCount: 168,
+  //   estimatedDelivery: "12-26 days (International), 3-6 days (United States)",
+  //   returnPolicy:
+  //     "Return within 30 days of purchase. Duties & taxes are non-refundable.",
+  // };
 
   return (
     <main>

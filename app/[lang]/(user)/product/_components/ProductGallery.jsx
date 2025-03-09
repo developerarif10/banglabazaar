@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function ProductGallery({ product }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [activeColor, setActiveColor] = useState(product.colors[0]._id);
+  const [activeColor, setActiveColor] = useState(product.colors[0].id);
   const [images, setImages] = useState(product.colors[0].images);
 
   useEffect(() => {
@@ -73,8 +73,9 @@ export default function ProductGallery({ product }) {
                   <Image
                     src={image || "/placeholder.svg?height=600&width=600"}
                     alt={`${product.title} image ${index + 1}`}
-                    fill
-                    className="object-cover"
+                    width={500}
+                    height={650}
+                    className="w-full h-full object-contain"
                   />
                 </div>
               </SwiperSlide>

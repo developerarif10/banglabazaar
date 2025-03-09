@@ -11,19 +11,19 @@
         "id": "Brown",
         "name": "bg-brown",
         "value": "bg-gray-400",
-        "images": [
-          "/images/products/hoodie1.jpg",
-          "/images/products/hoodie2.jpg"
-        ]
+        "images": ["/images/products/brown.jpg", "/images/products/purple.jpg"]
       },
       {
-        "id": "black",
-        "name": "Black",
-        "value": "bg-black",
-        "images": [
-          "/images/products/hoodie3.jpg",
-          "/images/products/hoodie4.jpg"
-        ]
+        "id": "Light Purple",
+        "name": "Light Purple",
+        "value": "bg-purple",
+        "images": ["/images/products/purple.jpg", "/images/products/purple.jpg"]
+      },
+      {
+        "id": "Light Green",
+        "name": "Light Green",
+        "value": "bg-light-green",
+        "images": ["/images/products/green.jpg"]
       }
     ],
     "sizes": ["M", "L", "XL", "XXL"],
@@ -40,7 +40,7 @@
     "returnPolicy": "Return within 15 days."
   },
   {
-    "title": "Classic Chino Pants",
+    "title": "Oversized Printed T-shirt",
     "price": 40.0,
     "comparePrice": 55.0,
     "discount": "27%",
@@ -51,13 +51,10 @@
         "id": "khaki",
         "name": "Khaki",
         "value": "bg-yellow-800",
-        "images": ["/images/products/chino1.jpg", "/images/products/chino2.jpg"]
-      },
-      {
-        "id": "navy",
-        "name": "Navy",
-        "value": "bg-blue-800",
-        "images": ["/images/products/chino3.jpg", "/images/products/chino4.jpg"]
+        "images": [
+          "/images/products/white-8.jpg",
+          "/images/products/white-14.jpg"
+        ]
       }
     ],
     "sizes": ["S", "M", "L", "XL"],
@@ -82,16 +79,10 @@
     "description": "A breezy floral print dress with a flattering fit-and-flare silhouette. Perfect for summer days and casual outings.",
     "colors": [
       {
-        "id": "red",
-        "name": "Red",
-        "value": "bg-red-500",
-        "images": ["/images/products/dress1.jpg", "/images/products/dress2.jpg"]
-      },
-      {
-        "id": "blue",
-        "name": "Blue",
-        "value": "bg-blue-500",
-        "images": ["/images/products/dress3.jpg", "/images/products/dress4.jpg"]
+        "id": "Light Purple",
+        "name": "Light Purple",
+        "value": "bg-purple-500",
+        "images": ["/images/products/purple.jpg"]
       }
     ],
     "sizes": ["S", "M", "L"],
@@ -116,22 +107,10 @@
     "description": "A soft and breathable cotton t-shirt with a relaxed fit. Perfect for everyday wear with comfort in mind.",
     "colors": [
       {
-        "id": "white",
-        "name": "White",
-        "value": "bg-white",
-        "images": [
-          "/images/products/tshirt1.jpg",
-          "/images/products/tshirt2.jpg"
-        ]
-      },
-      {
-        "id": "black",
-        "name": "Black",
-        "value": "bg-black",
-        "images": [
-          "/images/products/tshirt3.jpg",
-          "/images/products/tshirt4.jpg"
-        ]
+        "id": "Light Green",
+        "name": "Light Green",
+        "value": "bg-light-green",
+        "images": ["/images/products/green.jpg"]
       }
     ],
     "sizes": ["S", "M", "L", "XL"],
