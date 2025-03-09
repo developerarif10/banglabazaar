@@ -6,19 +6,19 @@ import { useEffect, useRef, useState } from "react";
 
 const slides = [
   {
-    image: "/assets/slider/fashion-slideshow-05.jpg",
+    image: "/images/slider/fashion-slideshow-05.jpg",
     title: "Glamorous<br>Glam",
     subtitle: "From casual to formal, we've got you covered",
     link: "/shop",
   },
   {
-    image: "/assets/slider/fashion-slideshow-09.jpg",
+    image: "/images/slider/fashion-slideshow-09.jpg",
     title: "Simple <br>Style",
     subtitle: "From casual to formal, we've got you covered",
     link: "/shop",
   },
   {
-    image: "/assets/slider/fashion-slideshow-06.jpg",
+    image: "/images/slider/fashion-slideshow-06.jpg",
     title: "Glamorous<br>Glam",
     subtitle: "From casual to formal, we've got you covered",
     link: "/shop",

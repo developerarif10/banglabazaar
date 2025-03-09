@@ -11,10 +11,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="shortcut icon" href="/assets/logo/favicon.png" />
+        <link rel="shortcut icon" href="/images/logo/favicon.png" />
         <link
           rel="apple-touch-icon-precomposed"
-          href="/assets/logo/favicon.png"
+          href="/images/logo/favicon.png"
         />
       </head>
       <body

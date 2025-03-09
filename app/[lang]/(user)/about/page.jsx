@@ -6,7 +6,7 @@ const AboutUs = () => {
       {/* Banner */}
       <section className="relative">
         <Image
-          src="/assets/slider/about-banner-01.jpg"
+          src="/images/slider/about-banner-01.jpg"
           alt="About Us Banner"
           width={1920}
           height={600}
@@ -49,7 +49,7 @@ const AboutUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="order-2 md:order-1">
               <Image
-                src="/assets/collections/collection-69.jpg"
+                src="/images/collections/collection-69.jpg"
                 alt="Established 1995"
                 width={768}
                 height={512}
@@ -98,14 +98,14 @@ const AboutUs = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Image
-                src="/assets/collections/collection-71.jpg"
+                src="/images/collections/collection-71.jpg"
                 alt="Collection 71"
                 width={384}
                 height={256}
                 className="w-full object-cover rounded-md"
               />
               <Image
-                src="/assets/collections/collection-70.jpg"
+                src="/images/collections/collection-70.jpg"
                 alt="Collection 70"
                 width={384}
                 height={256}
@@ -194,7 +194,7 @@ const AboutUs = () => {
               </p>
               <div className="flex items-center">
                 <Image
-                  src="/assets/item/tets3.jpg"
+                  src="/images/item/tets3.jpg"
                   alt="Robert Smith"
                   width={64}
                   height={64}
@@ -222,7 +222,7 @@ const AboutUs = () => {
               </p>
               <div className="flex items-center">
                 <Image
-                  src="/assets/item/tets4.jpg"
+                  src="/images/item/tets4.jpg"
                   alt="Jenifer Unix"
                   width={64}
                   height={64}
@@ -250,7 +250,7 @@ const AboutUs = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             <div className="overflow-hidden rounded-md">
               <Image
-                src="/assets/shop/gallery/gallery-7.jpg"
+                src="/images/shop/gallery/gallery-7.jpg"
                 alt="Gallery 7"
                 width={256}
                 height={256}
@@ -259,7 +259,7 @@ const AboutUs = () => {
             </div>
             <div className="overflow-hidden rounded-md">
               <Image
-                src="/assets/shop/gallery/gallery-3.jpg"
+                src="/images/shop/gallery/gallery-3.jpg"
                 alt="Gallery 3"
                 width={256}
                 height={256}
@@ -268,7 +268,7 @@ const AboutUs = () => {
             </div>
             <div className="overflow-hidden rounded-md">
               <Image
-                src="/assets/shop/gallery/gallery-5.jpg"
+                src="/images/shop/gallery/gallery-5.jpg"
                 alt="Gallery 5"
                 width={256}
                 height={256}
@@ -277,7 +277,7 @@ const AboutUs = () => {
             </div>
             <div className="overflow-hidden rounded-md">
               <Image
-                src="/assets/shop/gallery/gallery-8.jpg"
+                src="/images/shop/gallery/gallery-8.jpg"
                 alt="Gallery 8"
                 width={256}
                 height={256}
@@ -286,7 +286,7 @@ const AboutUs = () => {
             </div>
             <div className="overflow-hidden rounded-md">
               <Image
-                src="/assets/shop/gallery/gallery-6.jpg"
+                src="/images/shop/gallery/gallery-6.jpg"
                 alt="Gallery 6"
                 width={256}
                 height={256}

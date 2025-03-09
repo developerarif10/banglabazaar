@@ -7,27 +7,27 @@ import { useRef } from "react";
 
 const categories = [
   {
-    image: "/assets/shop/beige.jpg",
+    image: "/images/shop/beige.jpg",
     title: "Clothing",
     link: "/shop",
   },
   {
-    image: "/assets/shop/collection-8.jpg",
+    image: "/images/shop/collection-8.jpg",
     title: "Sunglasses",
     link: "/shop",
   },
   {
-    image: "/assets/shop/pink-handbag-2.jpg",
+    image: "/images/shop/pink-handbag-2.jpg",
     title: "Bags",
     link: "/shop",
   },
   {
-    image: "/assets/shop/black-17.jpg",
+    image: "/images/shop/black-17.jpg",
     title: "Fashion",
     link: "/shop",
   },
   {
-    image: "/assets/shop/sneaker-2.jpg",
+    image: "/images/shop/sneaker-2.jpg",
     title: "Accessories",
     link: "/shop",
   },

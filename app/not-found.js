@@ -7,7 +7,7 @@ export default function NotFound() {
         {/* 404 Image */}
         <div className="mb-8">
           <img
-            src="/assets/item/404.svg"
+            src="/images/item/404.svg"
             alt="404 illustration"
             className="w-full h-auto"
           />

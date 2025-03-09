@@ -1,49 +1,15 @@
 [
   {
-    "title": "Slim Fit Denim Jacket",
-    "price": 45.0,
-    "comparePrice": 60.0,
-    "discount": "25%",
-    "badges": ["Best Seller", "Limited Edition"],
-    "description": "A timeless denim jacket with a modern slim fit. Features a button-up front, chest pockets, and a classic collar. Made from sustainable cotton fabric for all-day comfort.",
-    "colors": [
-      {
-        "id": "blue",
-        "name": "Blue",
-        "value": "bg-blue-700",
-        "images": ["/images/products/denim1.jpg", "/images/products/denim2.jpg"]
-      },
-      {
-        "id": "black",
-        "name": "Black",
-        "value": "bg-black",
-        "images": ["/images/products/denim3.jpg", "/images/products/denim4.jpg"]
-      }
-    ],
-    "sizes": ["S", "M", "L", "XL"],
-    "features": ["Button-up front", "Slim fit design", "Chest pockets"],
-    "materials": ["100% Cotton Denim"],
-    "careInstructions": [
-      { "icon": "icon-machine", "text": "Machine wash cold" },
-      { "icon": "icon-iron", "text": "Iron at low temperature" }
-    ],
-    "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 215,
-    "estimatedDelivery": "5-10 days",
-    "returnPolicy": "30-day return policy."
-  },
-  {
-    "title": "Oversized Cotton Hoodie",
-    "price": 35.0,
-    "comparePrice": 50.0,
+    "title": "Ribbed modal T-shirt",
+    "price": 18.95,
+    "comparePrice": 40.0,
     "discount": "30%",
     "badges": ["Trending", "New Arrival"],
     "description": "Stay cozy with our oversized cotton hoodie. Features a drawstring hood, kangaroo pocket, and ribbed cuffs for a relaxed fit.",
     "colors": [
       {
-        "id": "gray",
-        "name": "Gray",
+        "id": "Brown",
+        "name": "bg-brown",
         "value": "bg-gray-400",
         "images": [
           "/images/products/hoodie1.jpg",
