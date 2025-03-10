@@ -21,12 +21,7 @@ export default function RegisterPage() {
             </p>
           </div>
 
-          {/* Social Login Buttons */}
-          <div className="grid grid-cols-2 gap-4">
-            <SignIn medium="google" />
-            <SignIn medium="facebook" />
-          </div>
-
+          <RegisterForm />
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t"></span>
@@ -37,9 +32,11 @@ export default function RegisterPage() {
               </span>
             </div>
           </div>
-
-          <RegisterForm />
-
+          {/* Social Login Buttons */}
+          <div className="grid grid-cols-2 gap-4">
+            <SignIn medium="google" />
+            <SignIn medium="facebook" />
+          </div>
           <div className="text-center">
             <Link
               href="/login"
