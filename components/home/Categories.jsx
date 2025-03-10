@@ -3,7 +3,14 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useState } from "react";
+// Import Swiper React components
+import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
 
 const categories = [
   {
@@ -34,35 +41,30 @@ const categories = [
 ];
 
 export default function Categories() {
-  const sliderRef = useRef(null);
-
-  const scrollLeft = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: -300, behavior: "smooth" });
-    }
-  };
-
-  const scrollRight = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: 300, behavior: "smooth" });
-    }
-  };
+  // Use a ref instead of state to avoid TypeScript issues
+  const swiperRef = useState(null);
 
   return (
-    <section className="py-16">
+    <section className="py-8">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-xl font-bold uppercase">Shop by categories</h2>
           <div className="flex gap-2">
             <button
-              onClick={scrollLeft}
+              onClick={() => {
+                // @ts-ignore
+                swiperRef[0]?.slidePrev();
+              }}
               className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors"
               aria-label="Previous"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
-              onClick={scrollRight}
+              onClick={() => {
+                // @ts-ignore
+                swiperRef[0]?.slideNext();
+              }}
               className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors"
               aria-label="Next"
             >
@@ -73,12 +75,18 @@ export default function Categories() {
 
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12 md:col-span-8">
-            <div
-              ref={sliderRef}
-              className="flex gap-6 overflow-x-auto scrollbar-hide no-scrollbar pb-4 snap-x"
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={24}
+              slidesPerView="auto"
+              onSwiper={(swiper) => {
+                // @ts-ignore
+                swiperRef[1](swiper);
+              }}
+              className="!pb-4"
             >
               {categories.map((category, index) => (
-                <div key={index} className="min-w-[280px] snap-start">
+                <SwiperSlide key={index} className="!w-[280px]">
                   <div className="collection-item hover-img">
                     <Link
                       href={category.link}
@@ -111,9 +119,9 @@ export default function Categories() {
                       </div>
                     </Link>
                   </div>
-                </div>
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
           </div>
 
           <div className="col-span-12 md:col-span-4">

@@ -99,6 +99,65 @@
   }
 }
 
+/* Add these styles to hide scrollbars while maintaining scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari and Opera */
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* For horizontal scrolling containers */
+.overflow-x-auto {
+  overflow-x: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Make the sidebar sticky on desktop */
+@media (min-width: 768px) {
+  .sticky {
+    position: sticky;
+    top: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .sticky::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/*  Add smooth transitions for hover effects */
+.swiper-scrollbar {
+  display: none !important;
+}
+
+.hover-img img {
+  transition: transform 0.5s ease;
+}
+
+.hover-img:hover img {
+  transform: scale(1.05);
+}
+
+.hover-icon svg {
+  transition: transform 0.3s ease;
+}
+
+.hover-icon:hover svg {
+  transform: translateX(3px);
+}
+
 /* Custom styles */
 .preload-wrapper {
   position: relative;

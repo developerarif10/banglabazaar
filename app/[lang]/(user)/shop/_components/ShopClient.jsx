@@ -9,7 +9,7 @@ import {
   Grid2x2XIcon as Grid4X4,
   List,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FilterSidebar from "./FilterSidebar";
 import ProductCard from "./ProductCard";
 
@@ -26,6 +26,19 @@ export default function ShopClient({ products }) {
     color: "",
     size: "",
   });
+
+  // Prevent body scroll when filter sidebar is open on mobile
+  useEffect(() => {
+    if (showFilterSidebar) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [showFilterSidebar]);
 
   // Handle layout change
   const handleLayoutChange = (newLayout) => {
@@ -219,15 +232,19 @@ export default function ShopClient({ products }) {
             {/* Filter Sidebar */}
             <div
               className={`md:w-1/4 lg:w-1/5 ${
-                showFilterSidebar ? "block" : "hidden md:block"
+                showFilterSidebar
+                  ? "block fixed inset-0 z-40 md:static md:z-auto"
+                  : "hidden md:block"
               }`}
             >
-              <FilterSidebar
-                filters={filters}
-                onFilterChange={handleFilterChange}
-                onClearAll={clearAllFilters}
-                onClose={() => setShowFilterSidebar(false)}
-              />
+              <div className="h-full md:min-h-[calc(100vh-120px)]">
+                <FilterSidebar
+                  filters={filters}
+                  onFilterChange={handleFilterChange}
+                  onClearAll={clearAllFilters}
+                  onClose={() => setShowFilterSidebar(false)}
+                />
+              </div>
             </div>
 
             {/* Product Grid/List */}
@@ -313,7 +330,7 @@ export default function ShopClient({ products }) {
 
               {/* Products */}
               {layout === "list" ? (
-                <div className="space-y-6">
+                <div className="space-y-6 overflow-hidden">
                   {filteredProducts.map((product) => (
                     <ProductCard
                       key={product.id}
@@ -330,7 +347,7 @@ export default function ShopClient({ products }) {
                       : layout === "grid-3"
                       ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
                       : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-                  } gap-6`}
+                  } gap-6 overflow-hidden`}
                 >
                   {filteredProducts.map((product) => (
                     <ProductCard

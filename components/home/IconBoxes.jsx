@@ -2,7 +2,7 @@ import { CreditCard, HeadphonesIcon, RotateCcw, Truck } from "lucide-react";
 
 export default function IconBoxes() {
   return (
-    <section className="py-16">
+    <section className="pt-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="border border-border rounded-md p-6 text-center">

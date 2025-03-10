@@ -77,37 +77,7 @@ export default function Header() {
                     className="flex items-center gap-1 py-2 hover:text-black"
                   >
                     Home
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="m6 9 6 6 6-6"></path>
-                    </svg>
                   </Link>
-                  <div className="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-4 hidden group-hover:block z-10 w-[200px]">
-                    <Link href="/" className="block py-2 hover:text-black">
-                      Home Style 1
-                    </Link>
-                    <Link
-                      href="/home-2"
-                      className="block py-2 hover:text-black"
-                    >
-                      Home Style 2
-                    </Link>
-                    <Link
-                      href="/home-3"
-                      className="block py-2 hover:text-black"
-                    >
-                      Home Style 3
-                    </Link>
-                  </div>
                 </li>
                 <li className="relative group">
                   <Link
@@ -115,37 +85,7 @@ export default function Header() {
                     className="flex items-center gap-1 py-2 hover:text-black"
                   >
                     Shop
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="m6 9 6 6 6-6"></path>
-                    </svg>
                   </Link>
-                  <div className="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-4 hidden group-hover:block z-10 w-[200px]">
-                    <Link href="/shop" className="block py-2 hover:text-black">
-                      Shop Grid
-                    </Link>
-                    <Link
-                      href="/shop-list"
-                      className="block py-2 hover:text-black"
-                    >
-                      Shop List
-                    </Link>
-                    <Link
-                      href="/shop-filter"
-                      className="block py-2 hover:text-black"
-                    >
-                      Shop Filter
-                    </Link>
-                  </div>
                 </li>
                 <li className="relative group">
                   <Link
@@ -153,40 +93,7 @@ export default function Header() {
                     className="flex items-center gap-1 py-2 hover:text-black"
                   >
                     Products
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="m6 9 6 6 6-6"></path>
-                    </svg>
                   </Link>
-                  <div className="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-4 hidden group-hover:block z-10 w-[200px]">
-                    <Link
-                      href="/product/1"
-                      className="block py-2 hover:text-black"
-                    >
-                      Product Simple
-                    </Link>
-                    <Link
-                      href="/product/2"
-                      className="block py-2 hover:text-black"
-                    >
-                      Product Variable
-                    </Link>
-                    <Link
-                      href="/product/3"
-                      className="block py-2 hover:text-black"
-                    >
-                      Product Grouped
-                    </Link>
-                  </div>
                 </li>
                 <li className="relative group">
                   <Link
@@ -229,37 +136,7 @@ export default function Header() {
                     className="flex items-center gap-1 py-2 hover:text-black"
                   >
                     Blog
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="m6 9 6 6 6-6"></path>
-                    </svg>
                   </Link>
-                  <div className="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-4 hidden group-hover:block z-10 w-[200px]">
-                    <Link href="/blog" className="block py-2 hover:text-black">
-                      Blog Grid
-                    </Link>
-                    <Link
-                      href="/blog-list"
-                      className="block py-2 hover:text-black"
-                    >
-                      Blog List
-                    </Link>
-                    <Link
-                      href="/blog/1"
-                      className="block py-2 hover:text-black"
-                    >
-                      Blog Single
-                    </Link>
-                  </div>
                 </li>
               </ul>
             </nav>

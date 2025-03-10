@@ -13,13 +13,13 @@ export default function Home() {
     <div>
       <HeroSlider />
       <Marquee />
+      <IconBoxes />
       <Categories />
       <BestSeller />
       <Lookbook />
       <Testimonials />
       <Brands />
       <ShopGram />
-      <IconBoxes />
     </div>
   );
 }

@@ -29,3 +29,16 @@ export const getProductDetails = async (productId) => {
     throw error;
   }
 };
+
+export const getBestSellingProduct = async () => {
+  try {
+    await connectMongo();
+    const bestProduct = await ProductModel.find({
+      badges: "Best Seller",
+    }).lean();
+
+    return replaceMongoIdInArray(bestProduct);
+  } catch (error) {
+    throw error;
+  }
+};

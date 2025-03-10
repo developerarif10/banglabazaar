@@ -3,7 +3,14 @@
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useState } from "react";
+// Import Swiper React components
+import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
 
 const testimonials = [
   {
@@ -61,22 +68,11 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-  const sliderRef = useRef(null);
-
-  const scrollLeft = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: -300, behavior: "smooth" });
-    }
-  };
-
-  const scrollRight = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: 300, behavior: "smooth" });
-    }
-  };
+  // Use a ref instead of state to avoid TypeScript issues
+  const swiperRef = useState(null);
 
   return (
-    <section className="py-16">
+    <section className="py-8">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold mb-2">Happy Clients</h2>
@@ -84,14 +80,20 @@ export default function Testimonials() {
         </div>
 
         <div className="relative">
-          <div
-            ref={sliderRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 snap-x"
+          <Swiper
+            modules={[Navigation]}
+            spaceBetween={24}
+            slidesPerView="auto"
+            onSwiper={(swiper) => {
+              // @ts-ignore
+              swiperRef[1](swiper);
+            }}
+            className="!pb-4"
           >
             {testimonials.map((testimonial) => (
-              <div
+              <SwiperSlide
                 key={testimonial.id}
-                className="min-w-[300px] md:min-w-[350px] snap-start"
+                className="!w-[300px] md:!w-[350px]"
               >
                 <div className="bg-white p-6 rounded-lg shadow-sm h-full flex flex-col">
                   <div className="flex text-yellow-400 mb-2">
@@ -161,12 +163,15 @@ export default function Testimonials() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
 
           <button
-            onClick={scrollLeft}
+            onClick={() => {
+              // @ts-ignore
+              swiperRef[0]?.slidePrev();
+            }}
             className="absolute top-1/2 left-0 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center z-10"
             aria-label="Previous"
           >
@@ -174,7 +179,10 @@ export default function Testimonials() {
           </button>
 
           <button
-            onClick={scrollRight}
+            onClick={() => {
+              // @ts-ignore
+              swiperRef[0]?.slideNext();
+            }}
             className="absolute top-1/2 right-0 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center z-10"
             aria-label="Next"
           >

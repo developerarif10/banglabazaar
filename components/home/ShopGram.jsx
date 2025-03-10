@@ -2,7 +2,12 @@
 
 import { ChevronLeft, ChevronRight, ShoppingBag } from "lucide-react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useState } from "react";
+import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/navigation";
 
 const galleryItems = [
   { id: 1, image: "/images/shop/gallery/gallery-1.jpg" },
@@ -13,22 +18,10 @@ const galleryItems = [
 ];
 
 export default function ShopGram() {
-  const sliderRef = useRef(null);
-
-  const scrollLeft = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: -300, behavior: "smooth" });
-    }
-  };
-
-  const scrollRight = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: 300, behavior: "smooth" });
-    }
-  };
+  const swiperRef = useState(null);
 
   return (
-    <section className="py-16">
+    <section className="py-8">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold mb-2">Shop Gram</h2>
@@ -39,14 +32,20 @@ export default function ShopGram() {
         </div>
 
         <div className="relative">
-          <div
-            ref={sliderRef}
-            className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 snap-x"
+          <Swiper
+            modules={[Navigation]}
+            spaceBetween={16}
+            slidesPerView="auto"
+            onSwiper={(swiper) => {
+              // @ts-ignore
+              swiperRef[1](swiper);
+            }}
+            className="!pb-4"
           >
             {galleryItems.map((item) => (
-              <div
+              <SwiperSlide
                 key={item.id}
-                className="min-w-[200px] sm:min-w-[220px] md:min-w-[240px] snap-start"
+                className="!w-[200px] sm:!w-[220px] md:!w-[240px]"
               >
                 <div className="relative group rounded-md overflow-hidden">
                   <div className="aspect-square relative">
@@ -67,20 +66,26 @@ export default function ShopGram() {
                     </button>
                   </div>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
 
           <div className="flex justify-center gap-2 mt-6">
             <button
-              onClick={scrollLeft}
+              onClick={() => {
+                // @ts-ignore
+                swiperRef[0]?.slidePrev();
+              }}
               className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors"
               aria-label="Previous"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
             <button
-              onClick={scrollRight}
+              onClick={() => {
+                // @ts-ignore
+                swiperRef[0]?.slideNext();
+              }}
               className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors"
               aria-label="Next"
             >

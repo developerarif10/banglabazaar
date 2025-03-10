@@ -42,7 +42,7 @@ export default function FilterSidebar({
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-4 md:p-6 sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto">
+    <div className="bg-white border border-gray-200 rounded-lg p-4 md:p-6 h-full md:sticky md:top-4 overflow-y-auto scrollbar-hide">
       <div className="flex items-center justify-between mb-6 md:hidden">
         <h2 className="text-lg font-semibold flex items-center gap-2">
           <span className="inline-block w-5 h-5">
@@ -80,7 +80,7 @@ export default function FilterSidebar({
         </div>
 
         {expandedSections.categories && (
-          <ul className="space-y-2 max-h-48 overflow-y-auto pr-2">
+          <ul className="space-y-2 max-h-48 overflow-y-auto scrollbar-hide pr-2">
             <li className="text-primary font-medium">
               <a href="#" className="hover:underline">
                 Fashion
@@ -298,7 +298,7 @@ export default function FilterSidebar({
         </div>
 
         {expandedSections.color && (
-          <ul className="space-y-2 max-h-48 overflow-y-auto pr-2">
+          <ul className="space-y-2 max-h-48 overflow-y-auto scrollbar-hide pr-2">
             {[
               { name: "Beige", value: "bg-[#F5F5DC]" },
               { name: "Black", value: "bg-black" },
