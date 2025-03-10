@@ -6,6 +6,7 @@ import Modals from "@/components/modals/Modals";
 import GoToTop from "@/components/ui/GoToTop";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Inter } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -30,6 +31,7 @@ export default function MainLayout({ children }) {
         <ToolbarBottom />
         <Modals />
       </main>
+      <Toaster />
     </ThemeProvider>
   );
 }

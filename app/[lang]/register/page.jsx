@@ -1,33 +1,14 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import RegisterForm from "@/components/auth/RegisterForm";
+import SignIn from "@/components/auth/SignIn";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+
+export const Metadata = {
+  title: "Register",
+  description: "Banglabazaar Register",
+};
 
 export default function RegisterPage() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add registration logic here
-    console.log(formData);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   return (
     <div className="container relative min-h-screen flex-col items-center justify-center p-10">
       <div>
@@ -40,59 +21,24 @@ export default function RegisterPage() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="firstName">First name</Label>
-              <Input
-                id="firstName"
-                name="firstName"
-                type="text"
-                value={formData.firstName}
-                onChange={handleChange}
-                required
-              />
-            </div>
+          {/* Social Login Buttons */}
+          <div className="grid grid-cols-2 gap-4">
+            <SignIn medium="google" />
+            <SignIn medium="facebook" />
+          </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="lastName">Last name</Label>
-              <Input
-                id="lastName"
-                name="lastName"
-                type="text"
-                value={formData.lastName}
-                onChange={handleChange}
-                required
-              />
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t"></span>
             </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="email">Email *</Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-2 text-muted-foreground">
+                Or continue with
+              </span>
             </div>
+          </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="password">Password *</Label>
-              <Input
-                id="password"
-                name="password"
-                type="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <Button type="submit" className="w-full">
-              Register
-            </Button>
-          </form>
+          <RegisterForm />
 
           <div className="text-center">
             <Link
