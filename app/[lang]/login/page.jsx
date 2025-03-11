@@ -1,4 +1,6 @@
 "use client";
+import LoginForm from "@/components/auth/LoginForm";
+import SocialLogins from "@/components/auth/SocialLogin";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -15,11 +17,6 @@ import { useState } from "react";
 
 export default function LoginPage() {
   const [showResetPassword, setShowResetPassword] = useState(false);
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    // Add login logic here
-  };
 
   const handleResetPassword = (e) => {
     e.preventDefault();
@@ -39,25 +36,7 @@ export default function LoginPage() {
             </p>
           </div>
 
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="name@example.com"
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" required />
-            </div>
-
-            <Button type="submit" className="w-full">
-              Sign In
-            </Button>
-          </form>
+          <LoginForm />
 
           <div className="flex items-center justify-between">
             <Dialog
@@ -108,6 +87,8 @@ export default function LoginPage() {
               Don&apos;t have an account?
             </Link>
           </div>
+
+          <SocialLogins />
         </div>
       </div>
       <div className="lg:p-8 flex gap-2 flex-col">

@@ -1,5 +1,5 @@
 import RegisterForm from "@/components/auth/RegisterForm";
-import SignIn from "@/components/auth/SignIn";
+import SocialLogins from "@/components/auth/SocialLogin";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -32,11 +32,9 @@ export default function RegisterPage() {
               </span>
             </div>
           </div>
-          {/* Social Login Buttons */}
-          <div className="grid grid-cols-2 gap-4">
-            <SignIn medium="google" />
-            <SignIn medium="facebook" />
-          </div>
+          {/*  Buttons */}
+          <SocialLogins />
+
           <div className="text-center">
             <Link
               href="/login"
