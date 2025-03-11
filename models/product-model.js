@@ -18,6 +18,8 @@ const productSchema = new mongoose.Schema(
     title: { type: String, required: true },
     price: { type: Number, required: true },
     comparePrice: { type: Number, required: true },
+    category: { type: String, required: true },
+    brand: { type: String, required: true },
     discount: { type: String, required: true },
     badges: { type: [String], default: [] },
     description: { type: String, required: true },

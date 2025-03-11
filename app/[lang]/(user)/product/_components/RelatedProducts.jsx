@@ -1,6 +1,8 @@
 "use client";
 
+import { BarChart2, Eye, Heart, ShoppingBag } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -8,55 +10,7 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-export default function RelatedProducts() {
-  // This would typically come from an API
-  const products = [
-    {
-      id: "1",
-      title: "Ribbed Tank Top",
-      price: 16.95,
-      image: "/images/products/orange-1.jpg",
-      hoverImage: "/images/products/white-1.jpg",
-    },
-    {
-      id: "2",
-      title: "Ribbed modal T-shirt",
-      price: 18.95,
-      image: "/images/products/brown.jpg",
-      hoverImage: "/images/products/purple.jpg",
-      sale: true,
-      discount: "33%",
-    },
-    {
-      id: "3",
-      title: "Oversized Printed T-shirt",
-      price: 10.0,
-      image: "/images/products/white-3.jpg",
-      hoverImage: "/images/products/white-4.jpg",
-    },
-    {
-      id: "4",
-      title: "Oversized Printed T-shirt",
-      price: 16.95,
-      image: "/images/products/white-2.jpg",
-      hoverImage: "/images/products/pink-1.jpg",
-    },
-    {
-      id: "5",
-      title: "V-neck linen T-shirt",
-      price: 114.95,
-      image: "/images/products/brown-2.jpg",
-      hoverImage: "/images/products/brown-3.jpg",
-    },
-    {
-      id: "6",
-      title: "Loose Fit Sweatshirt",
-      price: 10.0,
-      image: "/images/products/light-green-1.jpg",
-      hoverImage: "/images/products/light-green-2.jpg",
-    },
-  ];
-
+export default function RelatedProducts({ relatedProducts }) {
   return (
     <div>
       <h2 className="text-xl font-semibold mb-6">People Also Bought</h2>
@@ -83,8 +37,8 @@ export default function RelatedProducts() {
         modules={[Navigation, Pagination]}
         className="relative"
       >
-        {products.map((product) => (
-          <SwiperSlide key={product.id}>
+        {relatedProducts.map((product) => (
+          <SwiperSlide key={product._id || product.id}>
             <ProductCard product={product} />
           </SwiperSlide>
         ))}
@@ -97,107 +51,167 @@ export default function RelatedProducts() {
 
 function ProductCard({ product }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [selectedColor, setSelectedColor] = useState(
+    product.colors?.[0]?.id || null
+  );
+
+  // Get the current images based on selected color
+  const currentColor =
+    product.colors?.find((color) => color.id === selectedColor) ||
+    product.colors?.[0];
+  const mainImage =
+    currentColor?.images?.[0] ||
+    product.image ||
+    "/placeholder.svg?height=400&width=300";
+  const hoverImage =
+    currentColor?.images?.[1] ||
+    currentColor?.images?.[0] ||
+    product.hoverImage ||
+    mainImage;
+
+  // Calculate discount percentage if comparePrice exists
+  const hasDiscount =
+    product.comparePrice && product.comparePrice > product.price;
+  const discountPercentage = hasDiscount
+    ? Math.round(
+        ((product.comparePrice - product.price) / product.comparePrice) * 100
+      )
+    : product.discount
+    ? Number.parseInt(product.discount)
+    : null;
 
   return (
-    <div
+    <Link
+      href={`/product/${product._id}`}
       className="group relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative overflow-hidden rounded-md aspect-square mb-3">
         <Image
-          src={
-            isHovered && product.hoverImage ? product.hoverImage : product.image
-          }
-          alt={product.title}
+          src={isHovered ? hoverImage : mainImage}
+          alt={product.title || product.name}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
 
-        {product.sale && (
+        {discountPercentage && (
           <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-            -{product.discount}
+            -
+            {typeof discountPercentage === "string"
+              ? discountPercentage
+              : `${discountPercentage}%`}
+          </div>
+        )}
+
+        {product.badges && product.badges.length > 0 && (
+          <div className="absolute top-2 left-2">
+            {product.badges.map((badge, index) => (
+              <div
+                key={index}
+                className="bg-primary text-white text-xs font-bold px-2 py-1 rounded mb-1"
+              >
+                {badge}
+              </div>
+            ))}
           </div>
         )}
 
         <div className="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
           <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-gray-100">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
-                clipRule="evenodd"
-              />
-            </svg>
+            <ShoppingBag className="h-4 w-4" />
           </button>
           <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-gray-100">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                clipRule="evenodd"
-              />
-            </svg>
+            <Heart className="h-4 w-4" />
           </button>
           <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-gray-100">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z" />
-            </svg>
+            <BarChart2 className="h-4 w-4" />
           </button>
           <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-gray-100">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-              <path
-                fillRule="evenodd"
-                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                clipRule="evenodd"
-              />
-            </svg>
+            <Eye className="h-4 w-4" />
           </button>
         </div>
 
-        <div className="absolute bottom-2 left-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-          <span className="bg-white px-2 py-1 text-xs font-medium rounded">
-            S
-          </span>
-          <span className="bg-white px-2 py-1 text-xs font-medium rounded">
-            M
-          </span>
-          <span className="bg-white px-2 py-1 text-xs font-medium rounded">
-            L
-          </span>
-          <span className="bg-white px-2 py-1 text-xs font-medium rounded">
-            XL
-          </span>
-        </div>
+        {product.sizes && (
+          <div className="absolute bottom-2 left-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+            {product.sizes.map((size) => (
+              <span
+                key={size}
+                className="bg-white px-2 py-1 text-xs font-medium rounded"
+              >
+                {size}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
+
+      {/* Color options */}
+      {product.colors && product.colors.length > 0 && (
+        <div className="flex gap-1 mb-2">
+          {product.colors.map((color) => (
+            <button
+              key={color.id}
+              className={`w-4 h-4 rounded-full border ${
+                selectedColor === color.id
+                  ? "border-primary"
+                  : "border-gray-300"
+              }`}
+              style={{
+                backgroundColor: color.value.startsWith("bg-")
+                  ? ""
+                  : color.value,
+              }}
+              onClick={() => setSelectedColor(color.id)}
+              aria-label={`Select ${color.name} color`}
+            />
+          ))}
+        </div>
+      )}
 
       <h3 className="font-medium mb-1">
         <a href="#" className="hover:text-primary">
-          {product.title}
+          {product.title || product.name}
         </a>
       </h3>
-      <p className="font-semibold">${product.price.toFixed(2)}</p>
-    </div>
+
+      <div className="flex items-center gap-2">
+        <p className="font-semibold">${product.price.toFixed(2)}</p>
+        {hasDiscount && (
+          <p className="text-gray-500 line-through text-sm">
+            ${product.comparePrice.toFixed(2)}
+          </p>
+        )}
+      </div>
+
+      {product.rating && (
+        <div className="flex items-center mt-1">
+          <div className="flex text-yellow-400">
+            {[...Array(5)].map((_, i) => (
+              <svg
+                key={i}
+                xmlns="http://www.w3.org/2000/svg"
+                className={`h-3 w-3 ${
+                  i < Math.floor(product.rating)
+                    ? "fill-current"
+                    : "stroke-current fill-none"
+                }`}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                />
+              </svg>
+            ))}
+          </div>
+          <span className="text-xs text-gray-500 ml-1">
+            ({product.reviewCount})
+          </span>
+        </div>
+      )}
+    </Link>
   );
 }
