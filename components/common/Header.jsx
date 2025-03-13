@@ -1,16 +1,77 @@
 "use client";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+import {
+  ChevronDown,
+  Heart,
+  Mail,
+  MapPin,
+  Menu,
+  Phone,
+  Search,
+  ShoppingBag,
+  User,
+  X,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
-  const [wishlistCount, setWishlistCount] = useState(0);
+  const [cartCount, setCartCount] = useState(2);
+  const [wishlistCount, setWishlistCount] = useState(5);
+
+  // For demo purposes
+  const categories = [
+    {
+      name: "Women",
+      href: "/shop/women",
+      featured: ["Dresses", "Tops", "Shoes"],
+    },
+    {
+      name: "Men",
+      href: "/shop/men",
+      featured: ["Shirts", "Pants", "Accessories"],
+    },
+    { name: "Kids", href: "/shop/kids", featured: ["Boys", "Girls", "Baby"] },
+    {
+      name: "Home",
+      href: "/shop/home",
+      featured: ["Decor", "Furniture", "Kitchen"],
+    },
+  ];
+
+  const pages = [
+    { name: "About Us", href: "/about" },
+    { name: "Contact Us", href: "/contact" },
+    { name: "FAQ", href: "/faq" },
+    { name: "Terms & Conditions", href: "/terms" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,272 +87,491 @@ export default function Header() {
   }, []);
 
   return (
-    <>
-      <header
-        className={`py-4 ${
-          isScrolled
-            ? "fixed top-0 left-0 w-full bg-white shadow-md z-50 transition-all"
-            : "relative"
-        }`}
-      >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between gap-4">
-            {/* Mobile Menu Button */}
-            <div className="lg:hidden">
-              <button
-                onClick={() => setMobileMenuOpen(true)}
-                className="p-2 hover:bg-gray-100 rounded-md"
-                aria-label="Open menu"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="3" y1="12" x2="21" y2="12"></line>
-                  <line x1="3" y1="6" x2="21" y2="6"></line>
-                  <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-              </button>
-            </div>
-
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <Link href="/">
-                <Image src="/logo.svg" alt="Ecomus" width={120} height={40} />
-              </Link>
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:block flex-1">
-              <ul className="flex justify-center items-center gap-8">
-                <li className="relative group">
-                  <Link
-                    href="/"
-                    className="flex items-center gap-1 py-2 hover:text-black"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li className="relative group">
-                  <Link
-                    href="/shop"
-                    className="flex items-center gap-1 py-2 hover:text-black"
-                  >
-                    Shop
-                  </Link>
-                </li>
-                <li className="relative group">
-                  <Link
-                    href="/products"
-                    className="flex items-center gap-1 py-2 hover:text-black"
-                  >
-                    Products
-                  </Link>
-                </li>
-                <li className="relative group">
-                  <Link
-                    href="/pages"
-                    className="flex items-center gap-1 py-2 hover:text-black"
-                  >
-                    Pages
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="m6 9 6 6 6-6"></path>
-                    </svg>
-                  </Link>
-                  <div className="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-4 hidden group-hover:block z-10 w-[200px]">
-                    <Link href="/about" className="block py-2 hover:text-black">
-                      About Us
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="block py-2 hover:text-black"
-                    >
-                      Contact Us
-                    </Link>
-                    <Link href="/faq" className="block py-2 hover:text-black">
-                      FAQ
-                    </Link>
-                  </div>
-                </li>
-                <li className="relative group">
-                  <Link
-                    href="/blog"
-                    className="flex items-center gap-1 py-2 hover:text-black"
-                  >
-                    Blog
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-
-            {/* Icons */}
-            <div className="flex items-center gap-5">
-              <button
-                onClick={() => setSearchOpen(true)}
-                className="hover:text-black"
-                aria-label="Search"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-              </button>
-              <button
-                onClick={() => console.log("Login modal")}
-                className="hover:text-black"
-                aria-label="Account"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-              </button>
-              <Link href="/wishlist" className="relative hover:text-black">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                </svg>
-                {wishlistCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                    {wishlistCount}
-                  </span>
-                )}
-              </Link>
-              <button
-                onClick={() => console.log("Cart modal")}
-                className="relative hover:text-black"
-                aria-label="Cart"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
-                  <path d="M3 6h18"></path>
-                  <path d="M16 10a4 4 0 0 1-8 0"></path>
-                </svg>
-                {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                    {cartCount}
-                  </span>
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile Menu */}
-      <MobileMenu
-        isOpen={mobileMenuOpen}
-        onClose={() => setMobileMenuOpen(false)}
-      />
-
-      {/* Search Modal */}
-      {searchOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-start justify-center pt-20">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl mx-4">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-semibold">Search</h2>
-              <button
-                onClick={() => setSearchOpen(false)}
-                className="p-1 hover:bg-gray-100 rounded-full"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
-            </div>
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search for products..."
-                className="w-full border border-gray-300 rounded-md py-3 px-4 pr-10 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
-              />
-              <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
+    <header
+      className={cn(
+        "w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-40 transition-all duration-200",
+        "dark:bg-background/80 dark:border-border/20",
+        isScrolled
+          ? "fixed top-0 left-0 right-0 shadow-sm dark:shadow-none dark:border-b"
+          : ""
       )}
-    </>
+    >
+      <div className="container py-3 md:py-4">
+        <div className="flex items-center justify-between">
+          {/* Mobile Menu */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent
+              side="left"
+              className="w-[300px] sm:w-[350px] overflow-y-auto bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border dark:bg-background/80"
+            >
+              <div className="flex flex-col h-full">
+                <div className="flex-1">
+                  <div className="py-4">
+                    <div className="mb-4">
+                      <Input
+                        placeholder="Search products..."
+                        className="w-full"
+                      />
+                    </div>
+
+                    <Accordion type="single" collapsible className="w-full">
+                      <AccordionItem value="home">
+                        <AccordionTrigger className="py-3">
+                          Home
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="pl-4 space-y-2">
+                            <Link
+                              href="/"
+                              className="block py-2 text-muted-foreground hover:text-foreground"
+                            >
+                              Home Style 1
+                            </Link>
+                            <Link
+                              href="/home-2"
+                              className="block py-2 text-muted-foreground hover:text-foreground"
+                            >
+                              Home Style 2
+                            </Link>
+                            <Link
+                              href="/home-3"
+                              className="block py-2 text-muted-foreground hover:text-foreground"
+                            >
+                              Home Style 3
+                            </Link>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+
+                      {categories.map((category) => (
+                        <AccordionItem
+                          key={category.name}
+                          value={category.name.toLowerCase()}
+                        >
+                          <AccordionTrigger className="py-3">
+                            {category.name}
+                          </AccordionTrigger>
+                          <AccordionContent>
+                            <div className="pl-4 space-y-2">
+                              {category.featured.map((item) => (
+                                <Link
+                                  key={item}
+                                  href={`${category.href}/${item
+                                    .toLowerCase()
+                                    .replace(" ", "-")}`}
+                                  className="block py-2 text-muted-foreground hover:text-foreground"
+                                >
+                                  {item}
+                                </Link>
+                              ))}
+                              <Link
+                                href={category.href}
+                                className="block py-2 font-medium text-primary"
+                              >
+                                View All {category.name}
+                              </Link>
+                            </div>
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+
+                      <AccordionItem value="pages">
+                        <AccordionTrigger className="py-3">
+                          Pages
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="pl-4 space-y-2">
+                            {pages.map((page) => (
+                              <Link
+                                key={page.name}
+                                href={page.href}
+                                className="block py-2 text-muted-foreground hover:text-foreground"
+                              >
+                                {page.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+
+                      <AccordionItem value="blog">
+                        <AccordionTrigger className="py-3">
+                          Blog
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="pl-4 space-y-2">
+                            <Link
+                              href="/blog"
+                              className="block py-2 text-muted-foreground hover:text-foreground"
+                            >
+                              Blog Grid
+                            </Link>
+                            <Link
+                              href="/blog-list"
+                              className="block py-2 text-muted-foreground hover:text-foreground"
+                            >
+                              Blog List
+                            </Link>
+                            <Link
+                              href="/blog/1"
+                              className="block py-2 text-muted-foreground hover:text-foreground"
+                            >
+                              Blog Single
+                            </Link>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+                </div>
+
+                <div className="border-t border-border/40 dark:border-border/20 pt-4 space-y-4">
+                  <div className="flex flex-col space-y-2">
+                    <div className="flex items-center space-x-2 text-sm">
+                      <Phone size={16} className="text-muted-foreground" />
+                      <a
+                        href="tel:+12125551234"
+                        className="hover:text-primary transition-colors"
+                      >
+                        (212) 555-1234
+                      </a>
+                    </div>
+                    <div className="flex items-center space-x-2 text-sm">
+                      <Mail size={16} className="text-muted-foreground" />
+                      <a
+                        href="mailto:info@ecomus.com"
+                        className="hover:text-primary transition-colors"
+                      >
+                        info@ecomus.com
+                      </a>
+                    </div>
+                    <div className="flex items-start space-x-2 text-sm">
+                      <MapPin
+                        size={16}
+                        className="mt-0.5 flex-shrink-0 text-muted-foreground"
+                      />
+                      <span className="text-muted-foreground">
+                        1234 Fashion Street, Suite 567, New York, NY 10001
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex space-x-4">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      asChild
+                      className="flex-1"
+                    >
+                      <Link href="/login">Sign In</Link>
+                    </Button>
+                    <Button size="sm" asChild className="flex-1">
+                      <Link href="/register">Register</Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
+
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link href="/" className="flex items-center">
+              <div className="relative h-8 w-24 sm:h-10 sm:w-28">
+                <Image
+                  src="/logo.svg"
+                  alt="Ecomus"
+                  fill
+                  className="object-contain dark:invert"
+                />
+              </div>
+            </Link>
+          </div>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
+            <Link
+              href="/"
+              className="text-sm font-medium hover:text-primary transition-colors"
+            >
+              Home
+            </Link>
+
+            {categories.map((category) => (
+              <DropdownMenu key={category.name}>
+                <DropdownMenuTrigger className="flex items-center text-sm font-medium hover:text-primary transition-colors focus:outline-none">
+                  {category.name}
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="center"
+                  className="w-[200px] p-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border dark:bg-background/80"
+                >
+                  {category.featured.map((item) => (
+                    <DropdownMenuItem key={item} asChild>
+                      <Link
+                        href={`${category.href}/${item
+                          .toLowerCase()
+                          .replace(" ", "-")}`}
+                      >
+                        {item}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                  <DropdownMenuItem
+                    asChild
+                    className="font-medium text-primary"
+                  >
+                    <Link href={category.href}>View All {category.name}</Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ))}
+
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center text-sm font-medium hover:text-primary transition-colors focus:outline-none">
+                Pages
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="center"
+                className="w-[200px] p-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border dark:bg-background/80"
+              >
+                {pages.map((page) => (
+                  <DropdownMenuItem key={page.name} asChild>
+                    <Link href={page.href}>{page.name}</Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <Link
+              href="/blog"
+              className="text-sm font-medium hover:text-primary transition-colors"
+            >
+              Blog
+            </Link>
+          </nav>
+
+          {/* Icons */}
+          <div className="flex items-center">
+            <Dialog open={searchOpen} onOpenChange={setSearchOpen}>
+              <DialogTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:text-primary"
+                >
+                  <Search className="h-5 w-5" />
+                  <span className="sr-only">Search</span>
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[600px] bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border dark:bg-background/80">
+                <DialogHeader>
+                  <DialogTitle>Search Products</DialogTitle>
+                </DialogHeader>
+                <div className="relative mt-4">
+                  <Input
+                    placeholder="Search for products..."
+                    className="pr-10"
+                    autoFocus
+                  />
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="absolute right-0 top-0 h-full"
+                  >
+                    <Search className="h-5 w-5" />
+                  </Button>
+                </div>
+                <div className="mt-4">
+                  <h4 className="text-sm font-medium mb-2">Popular Searches</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Dresses",
+                      "T-shirts",
+                      "Sneakers",
+                      "Jeans",
+                      "Accessories",
+                    ].map((term) => (
+                      <Button
+                        key={term}
+                        variant="outline"
+                        size="sm"
+                        onClick={() => console.log(`Search for ${term}`)}
+                      >
+                        {term}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:text-primary hidden sm:flex"
+                >
+                  <User className="h-5 w-5" />
+                  <span className="sr-only">Account</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="end"
+                className="w-[200px] bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border dark:bg-background/80"
+              >
+                <DropdownMenuItem asChild>
+                  <Link href="/account">My Account</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/orders">Orders</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/wishlist">Wishlist</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/login">Sign In</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/register">Register</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hover:text-primary relative hidden sm:flex"
+              asChild
+            >
+              <Link href="/wishlist">
+                <Heart className="h-5 w-5" />
+                {wishlistCount > 0 && (
+                  <Badge
+                    variant="destructive"
+                    className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs"
+                  >
+                    {wishlistCount}
+                  </Badge>
+                )}
+                <span className="sr-only">Wishlist</span>
+              </Link>
+            </Button>
+
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:text-primary relative"
+                >
+                  <ShoppingBag className="h-5 w-5" />
+                  {cartCount > 0 && (
+                    <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs">
+                      {cartCount}
+                    </Badge>
+                  )}
+                  <span className="sr-only">Cart</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent
+                side="right"
+                className="w-full sm:max-w-md bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border dark:bg-background/80"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-between pb-4 border-b border-border/40 dark:border-border/20">
+                    <h2 className="text-lg font-semibold">
+                      Shopping Cart ({cartCount})
+                    </h2>
+                    <Button variant="ghost" size="sm">
+                      Clear All
+                    </Button>
+                  </div>
+
+                  <div className="flex-1 overflow-auto py-6">
+                    {[1, 2].map((item) => (
+                      <div key={item} className="flex gap-4 mb-6">
+                        <div className="relative h-20 w-20 rounded-md overflow-hidden bg-muted flex-shrink-0">
+                          <Image
+                            src={`/placeholder.svg?height=80&width=80&text=Product+${item}`}
+                            alt={`Product ${item}`}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex justify-between">
+                            <div>
+                              <h3 className="font-medium">
+                                Product Name {item}
+                              </h3>
+                              <p className="text-sm text-muted-foreground">
+                                Size: M | Color: Black
+                              </p>
+                              <div className="flex items-center mt-1">
+                                <Button
+                                  variant="outline"
+                                  size="icon"
+                                  className="h-6 w-6 rounded-full"
+                                >
+                                  <span>-</span>
+                                </Button>
+                                <span className="mx-2 text-sm">1</span>
+                                <Button
+                                  variant="outline"
+                                  size="icon"
+                                  className="h-6 w-6 rounded-full"
+                                >
+                                  <span>+</span>
+                                </Button>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <p className="font-medium">$99.00</p>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-6 w-6 mt-1"
+                              >
+                                <X className="h-4 w-4" />
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="border-t border-border/40 dark:border-border/20 pt-4">
+                    <div className="flex justify-between mb-2">
+                      <span>Subtotal</span>
+                      <span className="font-medium">$198.00</span>
+                    </div>
+                    <div className="flex justify-between mb-6">
+                      <span>Shipping</span>
+                      <span className="font-medium">Free</span>
+                    </div>
+
+                    <Button className="w-full mb-2">Checkout</Button>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link href="/cart">View Cart</Link>
+                    </Button>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </div>
+      </div>
+    </header>
   );
 }

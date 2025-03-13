@@ -77,16 +77,16 @@ export default function LanguageSwitcher() {
           e.stopPropagation();
           setIsOpen(!isOpen);
         }}
-        className="flex items-center gap-2 px-3 py-2 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 hover:bg-accent/50 transition-colors"
+        className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors"
       >
         <Image
           src={selectedLanguage.flag || "/placeholder.svg"}
           alt={selectedLanguage.language}
-          width={20}
-          height={20}
+          width={16}
+          height={16}
           className="rounded-full object-cover"
         />
-        <span className="text-sm font-medium">{selectedLanguage.language}</span>
+        <span>{selectedLanguage.language}</span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.2 }}
@@ -105,7 +105,7 @@ export default function LanguageSwitcher() {
               duration: 0.2,
               ease: [0.4, 0, 0.2, 1],
             }}
-            className="absolute right-0 mt-2 w-48 rounded-lg border bg-popover shadow-lg z-50"
+            className="absolute right-0 mt-2 w-40 rounded-lg border bg-popover shadow-lg z-[100]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-1">
@@ -121,12 +121,12 @@ export default function LanguageSwitcher() {
                   }}
                   onClick={() => handleLanguageChange(lang)}
                   className={cn(
-                    "flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-sm",
+                    "flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm",
                     "hover:bg-accent hover:text-accent-foreground transition-colors",
                     selectedLanguage.code === lang.code && "bg-accent/50"
                   )}
                 >
-                  <div className="relative flex h-6 w-6 shrink-0 overflow-hidden rounded-full">
+                  <div className="relative flex h-5 w-5 shrink-0 overflow-hidden rounded-full">
                     <Image
                       src={lang.flag || "/placeholder.svg"}
                       alt={lang.language}

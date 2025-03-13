@@ -1,158 +1,124 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+import { Facebook, Github, Instagram, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 import ModeToggle from "../others/mode-toggle";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function TopBar() {
-  const [language, setLanguage] = useState("Eng");
-  const [languageDropdown, setLanguageDropdown] = useState(false);
+  const [announcement, setAnnouncement] = useState(0);
+  const announcements = [
+    { text: "Spring Fashion Sale", link: "/shop" },
+    { text: "Free shipping on orders over $50", link: "/shipping" },
+    { text: "New arrivals every week", link: "/new-arrivals" },
+  ];
+
+  // Auto-rotate announcements
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setAnnouncement((prev) => (prev + 1) % announcements.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <div className="bg-white border-b border-gray-200 py-2">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-          {/* Social Icons */}
-          <ul className="flex gap-2.5 justify-center md:justify-start">
-            <li>
-              <a
-                href="#"
-                className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-colors"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-colors"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-colors"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-colors"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-colors"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                </svg>
-              </a>
-            </li>
-          </ul>
-
-          {/* Announcement Slider */}
-          <div className="text-center hidden md:block">
-            <p className="font-medium">
-              Spring Fashion Sale{" "}
-              <Link
-                href="/shop"
-                className="text-black hover:underline ml-2 inline-flex items-center"
-              >
-                Shop now
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="ml-1"
-                >
-                  <path d="M5 12h14"></path>
-                  <path d="m12 5 7 7-7 7"></path>
-                </svg>
-              </Link>
-            </p>
+    <div className="w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 relative z-30 dark:bg-background/80 dark:border-border/20">
+      <div className="container py-2">
+        <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-4">
+          {/* Social Icons - Hidden on mobile, visible on sm and up */}
+          <div className="hidden sm:flex items-center space-x-1 md:space-x-2">
+            <Link
+              href="#"
+              className="h-7 w-7 rounded-full flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+              aria-label="Facebook"
+            >
+              <Facebook size={15} />
+            </Link>
+            <Link
+              href="#"
+              className="h-7 w-7 rounded-full flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+              aria-label="Twitter"
+            >
+              <Twitter size={15} />
+            </Link>
+            <Link
+              href="#"
+              className="h-7 w-7 rounded-full flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+              aria-label="Instagram"
+            >
+              <Instagram size={15} />
+            </Link>
+            <Link
+              href="#"
+              className="h-7 w-7 rounded-full flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+              aria-label="Github"
+            >
+              <Github size={15} />
+            </Link>
+            <Link
+              href="#"
+              className="h-7 w-7 rounded-full flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={15} />
+            </Link>
           </div>
 
-          {/* Language & Currency */}
-          <div className="flex justify-center items-center md:justify-end gap-4">
-            <ModeToggle />
+          {/* Announcement Slider - Centered on mobile */}
+          <div
+            className={cn(
+              "flex-1 overflow-hidden text-center",
+              "sm:flex-none sm:flex-grow sm:text-center",
+              "md:flex-1"
+            )}
+          >
+            <div className="relative h-6">
+              {announcements.map((item, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    "absolute inset-0 flex items-center justify-center transition-all duration-500 transform px-2",
+                    index === announcement
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-8 opacity-0"
+                  )}
+                >
+                  <p className="text-xs sm:text-sm font-medium truncate">
+                    {item.text}{" "}
+                    <Link
+                      href={item.link}
+                      className="text-primary hover:underline ml-1 inline-flex items-center"
+                    >
+                      Shop now
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="ml-1"
+                      >
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                      </svg>
+                    </Link>
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-            <div className="relative">
+          {/* Language & Theme */}
+          <div className="flex items-center space-x-3 md:space-x-4">
+            <ModeToggle />
+            <div className="relative z-10">
               <LanguageSwitcher />
             </div>
           </div>
