@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import ModeToggle from "../others/mode-toggle";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function TopBar() {
   const [language, setLanguage] = useState("Eng");
@@ -152,47 +153,7 @@ export default function TopBar() {
             <ModeToggle />
 
             <div className="relative">
-              <button
-                className="flex items-center gap-1 hover:text-black"
-                onClick={() => setLanguageDropdown(!languageDropdown)}
-              >
-                {language}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="m6 9 6 6 6-6"></path>
-                </svg>
-              </button>
-              {languageDropdown && (
-                <div className="absolute right-0 top-full mt-2 bg-white shadow-md rounded-md p-2 z-10 w-32">
-                  <button
-                    onClick={() => {
-                      setLanguage("Eng");
-                      setLanguageDropdown(false);
-                    }}
-                    className="p-2 w-full hover:bg-gray-100 rounded-md text-left"
-                  >
-                    Eng
-                  </button>
-                  <button
-                    onClick={() => {
-                      setLanguage("Ban");
-                      setLanguageDropdown(false);
-                    }}
-                    className="p-2 w-full hover:bg-gray-100 rounded-md text-left"
-                  >
-                    Ban
-                  </button>
-                </div>
-              )}
+              <LanguageSwitcher />
             </div>
           </div>
         </div>
