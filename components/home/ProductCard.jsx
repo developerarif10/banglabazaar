@@ -1,10 +1,13 @@
 "use client";
-import { BarChart2, Eye, Heart, ShoppingBag } from "lucide-react";
+import { auth } from "@/auth";
+import { BarChart2, Eye, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import ProductWishlistButton from "../wishlist/ProductWishlistButton";
 
-export default function ProductCard({ product }) {
+export default async function ProductCard({ product }) {
+  const session = await auth();
   const [activeColor, setActiveColor] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -57,16 +60,7 @@ export default function ProductCard({ product }) {
             <span className="tooltip group-hover:opacity-100">Quick Add</span>
           </button>
 
-          <button
-            onClick={() => console.log("Add to wishlist", product?.id)}
-            className="box-icon bg-white hover:bg-primary hover:text-primary-foreground transition-colors mb-2 group relative"
-            aria-label="Add to wishlist"
-          >
-            <Heart className="h-4 w-4" />
-            <span className="tooltip group-hover:opacity-100">
-              Add to Wishlist
-            </span>
-          </button>
+          <ProductWishlistButton session={session} product={product} />
 
           <button
             onClick={() => console.log("Add to compare", product?.id)}

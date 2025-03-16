@@ -91,3 +91,24 @@ export const getProductsByIds = async (productIds) => {
     throw error;
   }
 };
+
+export const getSingleProduct = async (id, distinct) => {
+  try {
+    await connectMongo();
+    if (distinct) {
+      const product = await ProductModel.findById(id).distinct(distinct);
+      if (!product) {
+        return { msg: "No product found" };
+      }
+      return product;
+    } else {
+      const product = await ProductModel.findById(id);
+      if (!product) {
+        return { msg: "No product found" };
+      }
+      return product;
+    }
+  } catch (error) {
+    throw error;
+  }
+};

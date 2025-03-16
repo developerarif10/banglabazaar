@@ -199,7 +199,7 @@ export default function Footer() {
             </p>
             <NewsletterForm />
 
-            <div className="flex gap-4 mt-6">
+            {/* <div className="flex gap-4 mt-6">
               <div className="relative group">
                 <button className="flex items-center gap-1 text-sm">
                   <Image
@@ -218,7 +218,7 @@ export default function Footer() {
                   English
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
